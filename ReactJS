@@ -1,0 +1,120 @@
+*** ReactJS ***
+/* 
+	- hàm này thực hiện việc thiết lập state cho component
+	- việc sử dụng super(props) là để có thể sử dụng this.props trong phạm vi hàm constructor này
+*/
+constructor(props){
+	super(props)
+}
+
+// thực hiện một số tác vụ, hàm này chỉ thực hiện 1 lần duy nhất
+componentWillMount() {
+}
+
+/*
+	- thực hiện một số tác vụ, hàm này chỉ thực hiện 1 lần duy nhất
+	- hàm này rất hữu dụng khi bạn làm việc thêm với Map, bởi vì map chỉ render được khi có node (id) trong DOM
+	- nói tóm lại, hàm này được gọi để thông báo component đã tồn tại trên DOM từ đó các thao tác trên DOM sẽ có thể thực hiện bình thường đối với component này
+*/
+componentDidMount() {
+}
+
+/* 
+	- hàm này thực hiện một lần duy nhất, khi component sẽ unmout
+	- hàm này hữu dụng khi bạn cần xóa các timer không còn sử dụng
+*/
+componentWillUnmount(){
+}
+
+/* 
+	- hàm này thực hiện liên tục mỗi khi props thay đổi
+	- (1) sử dụng để thay đổi trạng thái (state) của component phụ thuộc props
+	-(2) sự dụng các kết quả, khởi tạo biến có tính chất async. ví dụ: khởi tạo Goole Map API, đây là quá trình async, do vậy bạn không thể biết được khi nào khởi tạo xong, thì khi khởi tạo xong có thể truyền xuống component thông qua props, và từ đó bạn có thể khởi tạo các dịch vụ khác.
+*/
+componentWillReceiveProps(nextProps){
+}
+
+/*
+	- hàm này thực hiện khi state và props thay đổi
+	- hàm này sẽ trả về kết quả true/false, bạn sẽ cần sử dụng đến hàm này để xử lý xem có cần update component không
+*/
+shouldComponentUpdate(nextProps, nextState) {
+}
+
+/*
+	- hàm này thực hiện dựa vào kết quả của hàm trên (shouldComponentUpdate)
+	- nếu hàm trên trả về false, thì react sẽ không gọi hàm này
+*/
+componentWillUpdate(nextProps, nextState){
+}
+
+/*
+	- hàm này thực hiện sau khi component được render lại, từ kết quả của componentWillUpdate
+*/
+componentDidUpdate(prevProps, prevState){
+}
+
+/*
+	- thực hiện lệnh render
+*/
+render(){
+	return(
+		// code 
+	);
+}
+
+// khai báo kiểu biến cho props
+User.propsTypes = {
+}
+
+// khai báo giá trị mặc định cho props
+User.defaultProps = {
+}
+
+/* 
+	Khởi tạo Component\
+*/
+
+// Lần lượt các hành động sau để khởi tạo component:
+
+Khởi tạo Class (đã thừa kế từ class Component của React)
+Khởi tạo giá trị mặc định cho Props (defaultProps)
+Khởi tạo giá trị mặc định cho State (trong hàm constuctor)
+Gọi hàm componentWillMount()
+Gọi hàm render()
+Gọi hàm componentDidMount()
+
+// Khi State thay đổi
+
+Cập nhật giá trị cho state
+Gọi hàm shouldComponentUpdate()
+Gọi hàm componentWillUpdate() – với điều kiện hàm trên return true
+Gọi hàm render()
+Gọi hàm componentDidUpdate()
+
+// Khi Props thay đổi
+
+Cập nhật giá trị cho props
+Gọi hàm componentWillReceiveProps()
+Gọi hàm shouldComponentUpdate()
+Gọi hàm componentWillUpdate() – với điều kiện hàm trên return true
+Gọi hàm render()
+Gọi hàm componetDidUpdate()
+
+// Khi Unmount component
+
+Gọi hàm componentWillUnmount()
+
+/*
+	Nói thêm về setState
+*/
+
+Trong React, bạn chỉ khởi tạo giá trị this.state một lần duy nhất, sau khi khởi tạo xong, nếu bạn muốn cập nhật this.state, bạn phải dùng hàm this.setState.
+
+Khi sử dụng this.setState, chính là kích hoạt danh sách các phương thức thuộc vòng đời của component (shouldComponentUpdate, componentWillUpdate, render, componentDidUpdate). Và cũng luôn nhớ rằng, this.setState là hàm async, nên truy cập this.state ngay sau khi setState sẽ không nhận được giá trị mới của this.state.
+
+/* Link tham khảo: https://www.businesscard.vn/blog/vong-doi-cua-component-trong-react */
+
+
+
+
